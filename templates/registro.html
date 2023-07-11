@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1 class="text-center">Registro de usuarios al sistema</h1>
+        <form method="POST" action="{% url 'registro' %}">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <div class="form-group">
+            <label for="{{ form.username.id_for_label }}" class="form-label">Usuario</label>
+            <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" class="form-control" required>
+            {% for error in form.username.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.email.id_for_label }}" class="form-label">Correo electrónico</label>
+            <input type="email" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" class="form-control" required>
+            {% for error in form.email.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}" class="form-label">Contraseña</label>
+            <input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" class="form-control" required>
+            {% for error in form.password1.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}" class="form-label">Confirmar contraseña</label>
+            <input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" class="form-control" required>
+            {% for error in form.password2.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+        </form>
+        <p class="text-center mt-3">Si ya tienes una cuenta, inicia sesión en <a href="/login">login</a></p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

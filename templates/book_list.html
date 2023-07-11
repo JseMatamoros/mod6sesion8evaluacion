@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container">  
+  <h2>Libros con valoración mayor a 1500:</h2>
+  <ul>
+    {% for book in high_rated_books %}
+    <li>
+      <strong>Título:</strong> {{ book.titulo }}, 
+      <strong>Autor:</strong> {{ book.autor }}, 
+      <strong>Valoración:</strong> {{ book.valoracion }}
+    </li>
+    {% empty %}
+    <li>No hay libros con valoración mayor a 1500.</li>
+    {% endfor %}
+  </ul>
+  
+  <h2>Listado de todos los libros:</h2>
+  <ul>
+    {% for book in books %}
+    <li>
+      <strong>Título:</strong> {{ book.titulo }}, 
+      <strong>Autor:</strong> {{ book.autor }}
+    </li>
+    {% empty %}
+    <li>No hay libros disponibles.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
