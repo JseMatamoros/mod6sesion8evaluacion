@@ -1,6 +1,6 @@
 from django import forms
 # probando tamebien
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 class BookForm(forms.Form):
@@ -16,3 +16,6 @@ class RegistroForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+        
+class LoginForm(AuthenticationForm):
+    pass
